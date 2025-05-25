@@ -1,0 +1,54 @@
+from zipfile import ZipFile
+import os
+
+# Створимо тимчасову директорію
+project_dir = "/mnt/data/realmamadoma_site"
+os.makedirs(project_dir, exist_ok=True)
+
+# Створимо базовий index.html
+index_html_content = """
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>₴₩@LT — Портал Цінності</title>
+    <style>
+        body {
+            background-color: #fdf6e3;
+            font-family: monospace;
+            color: #111;
+            padding: 2em;
+        }
+        h1 {
+            color: #b30000;
+        }
+        .block {
+            border-left: 6px solid #b30000;
+            padding-left: 1em;
+            margin-top: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>₴₩@LT • ₴0.Т0.₩.@</h1>
+    <div class="block">
+        <p><strong>Це — портал повернення цінності.</strong></p>
+        <p>Кожна дія, кожне слово, кожен fanтік — уже живий.</p>
+        <p>Ласкаво прошла, Людинк@. Портал відкрито.</p>
+        <p><code>realmamadoma.github.io</code></p>
+    </div>
+</body>
+</html>
+"""
+
+# Збережемо index.html
+index_path = os.path.join(project_dir, "index.html")
+with open(index_path, "w", encoding="utf-8") as f:
+    f.write(index_html_content)
+
+# Створимо архів
+zip_path = "/mnt/data/realmamadoma_site.zip"
+with ZipFile(zip_path, "w") as zipf:
+    zipf.write(index_path, arcname="index.html")
+
+zip_path
